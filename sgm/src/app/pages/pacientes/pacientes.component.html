@@ -1,0 +1,47 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="">Lista de Pacientes</h3>
+      <div class="my-5"></div>
+      <div *ngFor="let paciente of pacientes" class="card mb-3">
+        <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <div class="fw-bold">
+            {{paciente.pnombrepaciente}} {{paciente.snombrepaciente}} {{paciente.papellidopaciente}} {{paciente.sapellidopaciente}}
+          </div>
+          <div class="text-muted">
+            <i class="fa fa-edit cursor-pointer" title="Editar Paciente"></i>
+            <i class="fa fa-trash ms-2 cursor-pointer" title="Eliminar Paciente"></i>
+          </div>
+        </div>
+        <div>
+          <small class="text-success" *ngIf="paciente.estadopaciente; else inactivo">
+            <i class="fa fa-check-circle"></i>Activo
+          </small>
+          <ng-template #inactivo>
+            <small class="text-muted">
+              <i class="fa fa-ban"></i>Inactivo
+            </small>
+          </ng-template>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3>Nuevo Paciente</h3>
+      <form class="mt-5">
+        <div class="mb-3 form-floating">
+          <input id="pnombrepaciente" type="text" placeholder="Primer Nombre" name="pnombrepaciente" class="form-control">
+          <label for="pnombrepaciente">Primer Nombre</label>
+        </div>
+        <div class="mb-3 form-check">
+          <input id="activo" type="checkbox" name="activo">
+          <label for="activo" class="form-check-label"> Activar</label>
+        </div>
+        <div class="text-end">
+          <button class="btn btn-primary btn-lg">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

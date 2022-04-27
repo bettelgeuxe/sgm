@@ -130,8 +130,8 @@ public class PacienteController {
 		}
 	}
 	
-	//RECOMENDACIÓN, ENVIAR JSON SIN ID PERO EL SI ES OBLIGATORIO EN LA URL
-		@PutMapping("/pacientes/id/{id}")
+	
+	@PutMapping("/pacientes/id/{id}")
 		public ResponseEntity<Paciente> updatePacienteById(@PathVariable("id") String id, @RequestBody Paciente pacient) {
 			Optional<Paciente> pacienteData = pacienteRepository.findById(id);
 
