@@ -3,17 +3,17 @@
     <div class="col-md-6">
       <h3 class="">Lista de Pacientes</h3>
       <div class="my-5"></div>
-      <div *ngFor="let paciente of pacientes" class="card mb-3">
-        <div class="card-body">
-        <div class="d-flex justify-content-between">
-          <div class="fw-bold">
-            {{paciente.pnombrepaciente}} {{paciente.snombrepaciente}} {{paciente.papellidopaciente}} {{paciente.sapellidopaciente}}
-          </div>
-          <div class="text-muted">
-            <i class="fa fa-edit cursor-pointer" title="Editar Paciente"></i>
-            <i class="fa fa-trash ms-2 cursor-pointer" title="Eliminar Paciente"></i>
-          </div>
-        </div>
+        <div *ngFor="let paciente of pacientes" class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div class="fw-bold">
+                {{paciente.pnombrepaciente}} {{paciente.snombrepaciente}} {{paciente.papellidopaciente}} {{paciente.sapellidopaciente}}
+              </div>
+              <div class="text-muted">
+                <i class="fa fa-edit cursor-pointer" title="Editar Paciente"></i>
+                <i class="fa fa-trash ms-2 cursor-pointer" title="Eliminar Paciente"></i>
+              </div>
+            </div>
         <div>
           <small class="text-success" *ngIf="paciente.estadopaciente; else inactivo">
             <i class="fa fa-check-circle"></i>Activo
@@ -25,23 +25,106 @@
           </ng-template>
         </div>
       </div>
-      </div>
     </div>
-    <div class="col-md-6">
+  </div>
+    <div class="container col-md-6">
       <h3>Nuevo Paciente</h3>
-      <form class="mt-5">
-        <div class="mb-3 form-floating">
-          <input id="pnombrepaciente" type="text" placeholder="Primer Nombre" name="pnombrepaciente" class="form-control">
-          <label for="pnombrepaciente">Primer Nombre</label>
-        </div>
-        <div class="mb-3 form-check">
-          <input id="activo" type="checkbox" name="activo">
-          <label for="activo" class="form-check-label"> Activar</label>
-        </div>
-        <div class="text-end">
-          <button class="btn btn-primary btn-lg">Guardar</button>
-        </div>
-      </form>
+        <form class="mt-5" (ngSubmit)="createPaciente()">
+          <div class="row mb-3 form-floating">
+            <div class="col">
+              <label for="pnombrepaciente">1 Nombre</label>
+              <input id="pnombrepaciente" type="text" placeholder="Primer Nombre" name="pnombrepaciente" class="form-control">
+            </div>
+            <div class="col">
+              <label for="anombrepaciente">2 Nombre</label>
+              <input id="snombrepaciente" type="text" placeholder="Segundo Nombre" name="snombrepaciente" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3 form-floating">
+            <div class="col">
+              <label for="papellidopaciente">1 Apellido</label>
+              <input id="papellidopaciente" type="text" placeholder="Primer Apellido" name="papellidopaciente" class="form-control">
+            </div>
+            <div class="col">
+              <label for="sapellidopaciente">2 Apellido</label>
+              <input id="sapellidopaciente" type="text" placeholder="Segundo Apellido" name="sapellidopaciente" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3 form-floating">
+            <div class="col">
+              <label for="tipodocpaciente">Tipo Doc</label>
+              <select id="tipodocpaciente" class="form-select form-floating">
+                <option value="CC">CC</option>
+                <option value="TI">TI</option>
+                <option value="RC">RC</option>
+                <option value="CD">CD</option>
+                <option value="CE">CE</option>
+              </select>
+            </div>
+          <div class="col">
+            <label for="numdocpaciente">Documento</label>
+            <input id="numdocpaciente" type="text" placeholder="Solo números" name="numdocpaciente" class="form-control">
+          </div>
+          <div class="col">
+            <label for="birthpaciente">Nacimiento</label>
+            <input id="birthpaciente" type="text" placeholder="DD/MM/AAAA" name="birthpaciente" class="form-control">
+          </div>
+          <div class="col">
+            <label for="generopaciente">Género al nacer</label>
+            <select id="generopaciente" class="form-select form-floating">
+              <option value="F">Femenino</option>
+              <option value="M">Masculino</option>
+            </select>
+          </div>
+          </div>
+          <div class="row mb-3 form-floating">
+            <div class="col">
+              <label for="movilpaciente">Tel Móvil</label>
+              <input id="movilpaciente" type="number" placeholder="Tel Móvil" name="movilpaciente" class="form-control">
+            </div>
+            <div class="col">
+              <label for="telfijopaciente">Tel Fijo</label>
+              <input id="telfijopaciente" type="number" placeholder="Tel Fijo" name="telfijopaciente" class="form-control">
+            </div>
+              <div class="col">
+                <label for="paispaciente">País</label>
+                <input id="paispaciente" type="text" placeholder="País" name="paispaciente" class="form-control">
+              </div>
+          </div>
+          <div class="row mb-3 form-floating">
+            <div class="col">
+              <label for="dirpaciente">Dirección</label>
+              <input id="dirpaciente" type="text" placeholder="Dirección" name="dirpaciente" class="form-control">
+            </div>
+            <div class="col">
+              <label for="ciudadpaciente">Ciudad</label>
+              <input id="ciudadpaciente" type="text" placeholder="Ciudad" name="ciudadpaciente" class="form-control">
+            </div>
+            <div class="col">
+              <label for="sedepaciente">Sede</label>
+              <input id="sedepaciente" type="text" placeholder="Sede" name="sedepaciente" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3 form-floating">
+            <div class="col">
+              <label for="emailpaciente">E-mail</label>
+              <input id="dirpaciente" type="email" placeholder="Email" name="emailpciente" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3 form-check">
+            <div class="col">
+              <input class="form-check-input" id="activo" type="checkbox" name="activo" checked>
+              <label for="activo" class="form-check-label"> Activar Paciente</label>
+            </div>
+            <div class="col">
+              <input class="form-check-input" id="comunicaciones" type="checkbox" name="comunicaciones" checked>
+              <label for="comunicaciones" class="form-check-label"> Recibir Comunicaciones</label>
+            </div>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-primary btn-lg">Guardar</button>
+          </div>
+        </form>
     </div>
   </div>
 </div>
